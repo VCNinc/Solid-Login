@@ -75,5 +75,6 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 			}
 			?>
 		</div>
+		<script src="assets/solid-login.js"></script>
 	</body>
 </html>
