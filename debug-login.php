@@ -42,6 +42,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 		<div class="navbar">
@@ -93,6 +94,9 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					<div class="accept" style="display: none;">
 						<img src="assets/vivek.png" height="80">
 						<h2>Welcome back, Vivek!</h2>
+					</div>
+					<div class="recaptcha" style="display: none;">
+						<div class="g-recaptcha" data-sitekey="6LfK3iUUAAAAAHjv7jnrnDFh8xTqXm5oqX1P0EES"></div>
 					</div>
 				</div>
 			</div>
@@ -174,6 +178,10 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						<h2>Possible Responses:</h2>
 						<p><u>Send Two-Factor SMS (96.5%)</u>, Send Two-Factor Email (87.2%), Push Flash Applet, Send Push Notification (8.02%)</p>
 					</div>
+					<div id="r3" style="display: none;">
+						<h2>Possible Responses:</h2>
+						<p>Short Timeout (49.2%), <u>Google reCAPTCHA (100.0%)</u>, Send Two-Factor SMS (4.5%), Long Timeout (24.7%)</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -251,12 +259,13 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						}, 700);
 
 						var stage = 0;
+						var freq = 0;
 
 						function stageup() {
 							if(stage == 0) {
 								var email = $("#solid-email").val();
 								var password = $("#solid-password").val();
-								if(email.length > 0 && password.length > 0) {
+								if(email.length > 0 && password.length > 4) {
 									stage++;
 									threshold += 0.253;
 									setThreshold(threshold);
@@ -273,6 +282,24 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 										$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form2"><input type="text" placeholder="Your Answer" name="answer" id="solid-answer"></form></div>');
 										$(".stepview").prepend('<div class="step success"></div>');
 									}, 200);
+								} else if (email.length > 0 && password.length > 0 && password.length < 5) {
+									freq++;
+									if (freq > 3) {
+										freq = 3;
+									}
+									if (freq > 1) {
+										setCheck("request-rate", false);
+										setVector("automation", 6 - freq);
+									} else {
+										setVector("automation", 8 - freq);
+									}
+									if (freq > 2) {
+										setCheck("reactions", false);
+										setCheck("patterns", false);
+										setVector("behavior", 6);
+										stage = 4;
+									}
+									$("#solid-password").val("");
 								}
 							} else if (stage == 1) {
 								var answer = $("#solid-answer").val();
@@ -303,6 +330,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 									$("#solid-form3").slideUp(300);
 									$("#step-3 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
 									setVector("device", 10);
+									setVector("credentials", 10);
 									setTimeout(function(){
 										$(".threat").animate({left: '-250px'}, 300);
 										$(".stepview").prepend('<div class="step success"></div>');
@@ -327,6 +355,43 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 								setTimeout(function(){
 									$(".solid-dialogs, .solid-login-modal").remove();
 								}, 1000);
+							} else if (stage == 4) {
+								stage++;
+								threshold += 0.448;
+								setThreshold(threshold);
+								setCheck("requirements", true);
+								setCheck("reactions", true);
+								$("#solid-form").slideUp(300);
+								$("#step-1 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
+								setVector("credentials", 5);
+								setVector("behavior", 8);
+								setTimeout(function(){
+									$(".threat").animate({left: '133px', width: '135px'}, 300);
+									$(".action-box").fadeIn(100);
+									$(".solid-login-steps").append('<div class="solid-login-step" id="step-2"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 2</p><h2>Please complete the reCAPTCHA below.</h2></div></div>');
+									$(".recaptcha").show();
+									$(".stepview").prepend('<div class="step success"></div>');
+									$("#r1").hide();
+									$("#r3").show();
+								}, 200);
+							} else if (stage == 5) {
+								stage = 2;
+								threshold -= 0.648;
+								setThreshold(threshold);
+								setCheck("scope", false);
+								setVector("automation", 8);
+								setVector("behavior", 9);
+								setVector("credentials", 6);
+								$(".recaptcha").slideUp(300);
+								$("#step-2 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
+								setTimeout(function(){
+									$(".threat").animate({left: '268px', width: '130px'}, 300);
+									$(".solid-login-steps").append('<div class="solid-login-step" id="step-3"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 3</p><h2>Please enter a 2FA code from the Google Authenticator app.</h2></div></div>');
+									$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form3"><input type="text" placeholder="6-Digit Code" name="answer" id="solid-answer2"></form></div>');
+									$(".stepview").prepend('<div class="step success"></div>');
+									$("#r3").hide();
+									$("#r2").show();
+								}, 200);
 							}
 						}
 
