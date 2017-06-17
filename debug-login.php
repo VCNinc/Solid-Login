@@ -94,6 +94,49 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 				<div class="assesment">
 					<h1>Security Assesment</h1>
 				</div>
+				<div class="vectors">
+					<div class="threshold" style="top: 300px;">
+						<p class="left">Threshold</p>
+						<p class="threshold-text">8.145</p>
+					</div>
+					<div class="vector-box" vector="hacking">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Hacking</h2>
+						<p class="check"><i class="fa fa-">
+					</div>
+					<div class="vector-box" vector="automation">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Automation</h2>
+					</div>
+					<div class="vector-box" vector="device">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Device</h2>
+					</div>
+					<div class="vector-box" vector="credentials">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Credentials</h2>
+					</div>
+					<div class="vector-box" vector="geolocation">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Geolocation</h2>
+					</div>
+					<div class="vector-box" vector="behavior">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Behavior</h2>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -110,14 +153,49 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					$(".solid-login-steps").append('<div class="solid-login-step"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 1</p><h2>Basic Login Credentials</h2></div></div>');
 					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post"><input type="text" placeholder="Email Address" name="email"><input type="password" placeholder="Password" name="password"></form></div>');
 					$("#login-form").click(function(){
+						function setVector(vector, value) {
+							$(".vector-box[vector='" + vector + "'] .bar").height(30 * value);
+							$(".vector-box[vector='" + vector + "'] p").text(value);
+							if(value < 3.5) {
+								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#A90015'});
+							} else if (value < 7.5) {
+								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#F5E823'});
+							} else {
+								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#6AC259'});
+							}
+						}
+						function setThreshold(threshold) {
+							$(".threshold").css({top: (300 - (threshold * 30))});
+							$(".threshold-text").text(threshold);
+						}
+
 						$(".solid-dialogs").show().animate({marginTop: 0, opacity: 1}, 300);
 						$(".solid-login-modal").fadeIn(300);
+
+						var vectors = {
+							'hacking': 10,
+							'automation': 2,
+							'device': 5,
+							'credentials': 6,
+							'geolocation': 9,
+							'behavior': 6
+						};
+						var threshold = 7.145;
+
 						setTimeout(function() {
 							$(".solid-debug-dialog").show().animate({marginLeft: '20px'}, {duration: 450, queue: false});
 							setTimeout(function(){
 								$(".solid-debug-dialog").show().animate({opacity: 1}, {duration: 300, queue: false});
+								setTimeout(function(){							
+									$.each(vectors, function(vector, value) {
+										setVector(vector, value);
+									});
+									setThreshold(threshold);
+								}, 300);
 							}, 150);
 						}, 700);
+
+
 					});
 				});
 			}
