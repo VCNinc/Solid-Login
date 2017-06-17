@@ -1,0 +1,39 @@
+.solid-login-btn {
+	background: #FAFAFA;
+	border: 1px solid #C3C3C3;
+	text-align: left;
+	padding: 30px;
+	border-radius: 6px;
+	position: relative;
+	cursor: pointer;
+}
+
+.solid-login-btn:hover {
+	background: #EEE;
+}
+
+.solid-login-btn:active {
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.solid-login-btn p {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	margin: 0;
+	margin-top: 10px;
+	font-size: 16px;
+	color: #4A4A4A;
+}
+
+.solid-login-btn .fa {
+	color: #4A4A4A;
+	font-size: 32px;
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
