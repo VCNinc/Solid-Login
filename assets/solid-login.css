@@ -37,3 +37,182 @@
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
+
+.solid-login-modal {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background: #CCCCCC;
+	opacity: 0.5;
+	z-index: 9998;
+}
+
+.solid-login-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	background: #FFF;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 420px;
+	height: 700px;
+	z-index: 9999;
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.solid-login-bloq {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	text-align: center;
+}
+
+.solid-login-bloq img {
+	margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+.solid-login-bloq i.fa {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: #D8D8D8;
+	font-size: 22px;
+}
+
+.solid-login-btn-solid {
+	text-transform: uppercase;
+	padding: 15px 12px;
+	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+	color: #FFF!important;
+	background-color: #F57C00;
+	border: 0;
+	display: inline-block;
+	width: 175px;
+	margin-bottom: 0;
+	touch-action: manipulation;
+	cursor: pointer;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border-radius: 4px;
+	text-decoration: none;
+	position: absolute;
+	bottom: 70px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.solid-login-btn-solid:hover {
+	background-color: #E86F00!important;
+	border-color: #FFF;
+}
+
+.solid-login-btn-solid:active {
+	background-color: #DC6300!important;
+	background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+	box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.solid-login-step {
+	position: relative;
+}
+
+.solid-login-step .step-text {
+	text-align: left;
+	padding: 0 70px;
+}
+
+.solid-login-step h2 {
+	color: #4A4A4A;
+	font-size: 20px;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.solid-login-step p {
+	color: #9B9B9B;
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.solid-login-step i.fa {
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	display: inline-block;
+}
+
+.current-step {
+	margin-top: 30px;
+}
+
+.current-step input {
+	height: 50px;
+	padding: 0 25px;
+	border: 1px solid #C3C3C3;
+	border-radius: 4px;
+	background: #FAFAFA;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.current-step input:placeholder {
+	color: #C3C3C3;
+}
+
+.current-step {
+	padding: 0 70px;
+}
+
+.step {
+	display: inline-block;
+	margin: 0 10px;
+	background: #D8D8D8;
+	height: 10px;
+	width: 10px;
+	border-radius: 10px;
+}
+
+.longstep {
+	display: inline-block;
+	margin: 0 5px;
+	background: #9B9B9B;
+	height: 10px;
+	width: 75px;
+	border-radius: 10px;
+}
+
+.stepview {
+	position: absolute;
+	bottom: 30px;
+	width: 100%;
+}

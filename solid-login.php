@@ -44,7 +44,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 	</head>
 	<body>
 		<div class="navbar">
-			<img src="assets/generic-logo.png">
+			<img src="assets/generic-logo.svg">
 			<i class="fa fa-bars" aria-hidden="true"></i>
 		</div>
 		<div class="login-form">

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="156px" height="32px" viewBox="0 0 156 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>the company</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Step-12" transform="translate(-50.000000, -14.000000)">
+            <g id="the-company" transform="translate(50.000000, 11.000000)">
+                <text id="theCompany." font-family="Roboto-Black, Roboto" font-size="20" font-weight="700" fill="#4A4A4A">
+                    <tspan x="38.2420382" y="26">theCompany.</tspan>
+                </text>
+                <g id="Group-2">
+                    <polygon id="Rectangle-9" fill="#4990E2" points="13.2947685 19.3615302 26.7367596 11.7241379 26.7367596 26.9989224 13.2947685 34.6363147"></polygon>
+                    <polygon id="Rectangle-9-Copy" fill="#78B1F3" transform="translate(6.720996, 23.180226) scale(-1, 1) translate(-6.720996, -23.180226) " points="0 19.3615302 13.4419911 11.7241379 13.4419911 26.9989224 0 34.6363147"></polygon>
+                    <polygon id="Rectangle-9-Copy-2" fill="#A7D0FF" transform="translate(13.434904, 11.546325) scale(-1, 1) rotate(60.000000) translate(-13.434904, -11.546325) " points="6.71390859 7.72762861 20.1558997 0.0902363637 20.1558997 15.3650208 6.71390859 23.0024131"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
