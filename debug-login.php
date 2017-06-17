@@ -171,8 +171,8 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					$("#login-form input").hide();
 					$("#login-form").prepend('<div class="solid-login-btn"><img src="assets/solid-login.svg" height="25"><p>Login Securely with SolidLogin</p><i class="fa fa-chevron-right"></i></div>');
 					$("button[type=submit]").prop("disabled", true);
-					$(".solid-login-steps").append('<div class="solid-login-step"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 1</p><h2>Basic Login Credentials</h2></div></div>');
-					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form"><input type="text" placeholder="Email Address" name="email"><input type="password" placeholder="Password" name="password"></form></div>');
+					$(".solid-login-steps").append('<div class="solid-login-step" id="step-1"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 1</p><h2>Basic Login Credentials</h2></div></div>');
+					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form"><input type="text" placeholder="Email Address" name="email" id="solid-email"><input type="password" placeholder="Password" name="password" id="solid-password"></form></div>');
 					$("#login-form").click(function(){
 						function setVector(vector, value) {
 							$(".vector-box[vector='" + vector + "'] .bar").height(30 * value);
@@ -206,8 +206,8 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 
 						var vectors = {
 							'hacking': 10,
-							'automation': 7,
-							'device': 5,
+							'automation': 8,
+							'device': 6,
 							'credentials': 2,
 							'geolocation': 9,
 							'behavior': 8
@@ -215,20 +215,11 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						var threshold = 7.145;
 
 						setCheck("requirements", false);
-						setCheck("novelty", false);
 						setCheck("scope", false);
-						setCheck("recaptcha", false);
 						setCheck("isp", false);
 						setCheck("ip-address", false);
-						setCheck("history", false);
-
-						var stage = 0;
-
-						function stage() {
-							if(stage == 0) {
-								
-							}
-						}
+						setCheck("reaction", false);
+						setCheck("novelty", false);
 
 						setTimeout(function() {
 							$(".solid-debug-dialog").show().animate({marginLeft: '20px'}, {duration: 450, queue: false});
@@ -243,12 +234,33 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							}, 150);
 						}, 700);
 
+						var stage = 0;
+
+						function stageup() {
+							if(stage == 0) {
+								var email = $("#solid-email").val();
+								var password = $("#solid-password").val();
+								if(email.length > 0 && password.length > 0) {
+									stage++;
+									threshold += 0.253;
+									setThreshold(threshold);
+									setCheck("reaction", true);
+									setCheck("requirements", true);
+									$("#solid-form").slideUp(300);
+									$("#step-1 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
+									setVector("credentials", 5);
+								}
+							}
+						}
+
 						$("#solid-next").click(function(){
-							stage();
+							stageup();
 						});
 
-						$("#solid-form").submit(function(){
-							stage();
+						$("#solid-form").submit(function(e){
+							stageup();
+							e.preventDefault();
+							return false;
 						});
 					});
 				});
