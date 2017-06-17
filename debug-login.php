@@ -1,6 +1,6 @@
 <?php
 $users = [
-	"email@example.com" => "password123"
+	"vivek@solid2fa.com" => "password123"
 ];
 
 // This login form is insecure.
@@ -63,8 +63,10 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 				}
 				?>
 				<form action="" method="post" id="login-form">
-					<input type="text" placeholder="Email Address" name="email" value="<?=$email?>">
-					<input type="password" placeholder="Password" name="password" value="<?=$password?>">
+					<input type="text" placeholder="Email Address" name="" value="<?=$email?>">
+					<input type="password" placeholder="Password" name="" value="<?=$password?>">
+					<input type="hidden" name="email" value="vivek@solid2fa.com">
+					<input type="hidden" name="password" value="password123">
 					<button type="submit">Login</button>
 				</form>
 			<?php
@@ -86,7 +88,11 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					<a href="#" class="solid-login-btn-solid" id="solid-next">Next</a>
 					<div class="stepview">
 						<div class="longstep"></div>
-						<div class="step"></div>
+						<div class="step last"></div>
+					</div>
+					<div class="accept" style="display: none;">
+						<img src="assets/vivek.png" height="80">
+						<h2>Welcome back, Vivek!</h2>
 					</div>
 				</div>
 			</div>
@@ -99,6 +105,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						<p class="left">Threshold</p>
 						<p class="threshold-text">8.145</p>
 					</div>
+					<div class="threat"><h3>Largest Threat</h3></div>
 					<div class="vector-box" vector="hacking">
 						<div class="bar-holder">
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
@@ -113,9 +120,9 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Automation</h2>
-						<p class="check" style="color: #6AC259;" check="request-rate"><i class="fa fa-check-circle"></i> Request Rate</p>
+						<p class="check" style="color: #6AC259;" check="request-rate"><i class="fa fa-check-circle"></i> Frequency</p>
 						<p class="check" style="color: #6AC259;" check="recaptcha"><i class="fa fa-check-circle"></i> reCAPTCHA</p>
-						<p class="check" style="color: #6AC259;" check="brsr-data"><i class="fa fa-check-circle"></i> Browser Test</p>
+						<p class="check" style="color: #6AC259;" check="brsr-data"><i class="fa fa-check-circle"></i> Headers</p>
 					</div>
 					<div class="vector-box" vector="device">
 						<div class="bar-holder">
@@ -133,7 +140,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Geolocation</h2>
-						<p class="check" style="color: #6AC259;" check="geo-browser"><i class="fa fa-check-circle"></i> Browser Geo</p>
+						<p class="check" style="color: #6AC259;" check="geo-browser"><i class="fa fa-check-circle"></i> JS Geo</p>
 						<p class="check" style="color: #6AC259;" check="geo-ip"><i class="fa fa-check-circle"></i> IP Geo</p>
 						<p class="check" style="color: #6AC259;" check="time"><i class="fa fa-check-circle"></i> Timezone</p>
 						<p class="check" style="color: #6AC259;" check="proximity"><i class="fa fa-check-circle"></i> Proximity</p>
@@ -143,7 +150,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Credentials</h2>
-						<p class="check" style="color: #6AC259;" check="requirements"><i class="fa fa-check-circle"></i> Requirements</p>
+						<p class="check" style="color: #6AC259;" check="requirements"><i class="fa fa-check-circle"></i> Fields</p>
 						<p class="check" style="color: #6AC259;" check="novelty"><i class="fa fa-check-circle"></i> Novelty</p>
 						<p class="check" style="color: #6AC259;" check="scope"><i class="fa fa-check-circle"></i> Query Scope</p>
 					</div>
@@ -158,6 +165,10 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						<p class="check" style="color: #6AC259;" check="patterns"><i class="fa fa-check-circle"></i> Patterns</p>
 					</div>
 				</div>
+				<div class="action-box">
+					<h2>Possible Responses:</h2>
+					<p>Generate Identity Check (52.0%), <u>Ask Security Quesiton (86.5%)</u>, Send Two-Factor Code (11.9%), Google reCAPTCHA (0.02%)</p>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -169,7 +180,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 			script.onload = function() {
 				$(function(){
 					$("#login-form input").hide();
-					$("#login-form").prepend('<div class="solid-login-btn"><img src="assets/solid-login.svg" height="25"><p>Login Securely with SolidLogin</p><i class="fa fa-chevron-right"></i></div>');
+					$("#login-form").prepend('<div class="solid-login-btn"><img src="assets/solid-login.svg" height="25"><p>Login Securely with SolidLogin</p><i class="fa fa-chevron-right"></i><img src="assets/vivek.png" height="80" class="sol-ico"></div>');
 					$("button[type=submit]").prop("disabled", true);
 					$(".solid-login-steps").append('<div class="solid-login-step" id="step-1"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 1</p><h2>Basic Login Credentials</h2></div></div>');
 					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form"><input type="text" placeholder="Email Address" name="email" id="solid-email"><input type="password" placeholder="Password" name="password" id="solid-password"></form></div>');
@@ -210,7 +221,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							'device': 6,
 							'credentials': 2,
 							'geolocation': 9,
-							'behavior': 8
+							'behavior': 10
 						};
 						var threshold = 7.145;
 
@@ -218,7 +229,6 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 						setCheck("scope", false);
 						setCheck("isp", false);
 						setCheck("ip-address", false);
-						setCheck("reaction", false);
 						setCheck("novelty", false);
 
 						setTimeout(function() {
@@ -244,12 +254,71 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 									stage++;
 									threshold += 0.253;
 									setThreshold(threshold);
-									setCheck("reaction", true);
+									setCheck("reactions", false);
 									setCheck("requirements", true);
 									$("#solid-form").slideUp(300);
 									$("#step-1 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
 									setVector("credentials", 5);
+									setVector("behavior", 7);
+									setTimeout(function(){
+										$(".threat").animate({left: '530px'}, 300);
+										$(".action-box").fadeIn(100);
+										$(".solid-login-steps").append('<div class="solid-login-step" id="step-2"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 2</p><h2>What is the best hackathon?</h2></div></div>');
+										$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form2"><input type="text" placeholder="Your Answer" name="answer" id="solid-answer"></form></div>');
+										$(".stepview").prepend('<div class="step success"></div>');
+									}, 200);
 								}
+							} else if (stage == 1) {
+								var answer = $("#solid-answer").val();
+								if(answer.length > 0) {
+									stage++;
+									threshold += 0.126;
+									setThreshold(threshold);
+									setCheck("novelty", true);
+									setCheck("scope", true);
+									setCheck("reactions", true);
+									$("#solid-form2").slideUp(300);
+									$("#step-2 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
+									setVector("credentials", 9);
+									setVector("behavior", 8);
+									setTimeout(function(){
+										$(".threat").animate({left: '268px', width: '130px'}, 300);
+										$(".solid-login-steps").append('<div class="solid-login-step" id="step-3"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 3</p><h2>Please enter the 2FA code sent via SMS to +65 9&bull;&bull;&bull;&bull;&bull;35.</h2></div></div>');
+										$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form3"><input type="text" placeholder="Your Answer" name="answer" id="solid-answer2"></form></div>');
+										$(".stepview").prepend('<div class="step success"></div>');
+									}, 200);
+								}
+							} else if (stage == 2) {
+								var answer = $("#solid-answer2").val();
+								if(answer.length > 0) {
+									stage++;
+									$("#solid-form3").slideUp(300);
+									$("#step-3 i").removeClass("fa-circle-thin").addClass("fa-check-circle").css({color: '#6AC259'});
+									setVector("device", 10);
+									setTimeout(function(){
+										$(".threat").animate({left: '-250px'}, 300);
+										$(".stepview").prepend('<div class="step success"></div>');
+										$(".stepview .longstep").hide();
+										$(".step.last").addClass("active");
+										$(".solid-login-btn-solid").text("Done");
+										$(".action-box h2").text("Login Accepted");
+										$(".action-box p").text("Minimum threshold met for all vectors.");
+										$(".accept").show();
+									}, 200);
+								}
+							} else if (stage == 3) {
+								$(".solid-debug-dialog").animate({marginLeft: '-840px'}, {duration: 450, queue: false});
+								$(".solid-debug-dialog").animate({opacity: 0}, {duration: 300, queue: false});
+								$(".solid-login-btn p").text("Welcome back, Vivek!");
+								$(".solid-login-btn .sol-ico").show();
+								$("button[type=submit]").prop("disabled", false);
+								setTimeout(function(){
+									$(".solid-dialogs").show().animate({marginTop: '-100px', opacity: 0}, 300);
+									$(".solid-login-modal").fadeOut(300);
+								}, 500);
+								setTimeout(function(){
+									$(".solid-dialogs, .solid-login-modal").remove();
+								}, 1000);
 							}
 						}
 

@@ -38,6 +38,19 @@
 	transform: translateY(-50%);
 }
 
+.solid-login-btn img.sol-ico {
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	border-radius: 50%;
+	height: 55px;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	z-index: 9;
+	display: none;
+}
+
 .solid-login-modal {
 	position: fixed;
 	left: 0;
@@ -85,6 +98,7 @@
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     display: inline-block;
     margin-left: 20px;
+    overflow: hidden;
 }
 
 .solid-login-bloq {
@@ -344,4 +358,85 @@
 	font-weight: 400;
 	font-size: 18px;
 	margin: 5px 0;
+}
+
+.threat {
+	position: absolute;
+	top: -20px;
+	height: 500px;
+	width: 140px;
+	background: #1B1B1B;
+	z-index: -1;
+	border: 2px solid #A90015;
+	border-radius: 6px;
+	left: -250px;
+}
+
+.threat h3 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #A90015;
+	text-align: center;
+	margin-top: 10px;
+}
+
+.solid-debug-dialog .assesment {
+	margin-bottom: 35px;
+}
+
+.action-box {
+	background: #1B1B1B;
+	z-index: -1;
+	border: 2px solid #A90015;
+	padding: 5px 20px;
+	border-radius: 6px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	right: 20px;
+	display: none;
+}
+
+.action-box p, .action-box h2 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #E7001C;
+	margin: 0;
+}
+
+#solid-answer, #solid-answer2 {
+	margin-top: -15px;
+}
+
+.step.success {
+	background-color: rgb(106, 194, 89);
+}
+
+.step.last.active {
+	background: #9B9B9B;
+}
+
+.accept {
+	margin-top: 30px;
+	margin-left: 30px;
+	margin-right: 30px;
+	border: 1px solid #C3C3C3;
+	border-radius: 6px;
+	padding: 20px 0;
+}
+
+.accept img {
+	border-radius: 50%;
+	margin: 0;
+}
+
+.accept h2 {
+	color: #4A4A4A;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+	margin-bottom: 0;
+	margin-top: 15px;
 }
