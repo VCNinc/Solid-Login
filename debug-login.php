@@ -83,7 +83,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					<img src="assets/solid-login-ico.svg">
 					<i class="fa fa-times-circle"></i>
 					<div class="solid-login-steps"></div>
-					<a href="#" class="solid-login-btn-solid">Next</a>
+					<a href="#" class="solid-login-btn-solid" id="solid-next">Next</a>
 					<div class="stepview">
 						<div class="longstep"></div>
 						<div class="step"></div>
@@ -104,37 +104,58 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Hacking</h2>
-						<p class="check"><i class="fa fa-">
+						<p class="check" style="color: #6AC259;" check="sqli"><i class="fa fa-check-circle"></i> SQLi</p>
+						<p class="check" style="color: #6AC259;" check="xss"><i class="fa fa-check-circle"></i> XSS</p>
+						<p class="check" style="color: #6AC259;" check="csrf"><i class="fa fa-check-circle"></i> CSRF</p>
 					</div>
 					<div class="vector-box" vector="automation">
 						<div class="bar-holder">
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Automation</h2>
+						<p class="check" style="color: #6AC259;" check="request-rate"><i class="fa fa-check-circle"></i> Request Rate</p>
+						<p class="check" style="color: #6AC259;" check="recaptcha"><i class="fa fa-check-circle"></i> reCAPTCHA</p>
+						<p class="check" style="color: #6AC259;" check="brsr-data"><i class="fa fa-check-circle"></i> Browser Test</p>
 					</div>
 					<div class="vector-box" vector="device">
 						<div class="bar-holder">
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Device</h2>
-					</div>
-					<div class="vector-box" vector="credentials">
-						<div class="bar-holder">
-							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
-						</div>
-						<h2>Credentials</h2>
+						<p class="check" style="color: #6AC259;" check="os"><i class="fa fa-check-circle"></i> OS</p>
+						<p class="check" style="color: #6AC259;" check="browser"><i class="fa fa-check-circle"></i> Browser</p>
+						<p class="check" style="color: #6AC259;" check="system-name"><i class="fa fa-check-circle"></i> System ID</p>
+						<p class="check" style="color: #6AC259;" check="isp"><i class="fa fa-check-circle"></i> Net ISP</p>
+						<p class="check" style="color: #6AC259;" check="ip-address"><i class="fa fa-check-circle"></i> IP Address</p>
 					</div>
 					<div class="vector-box" vector="geolocation">
 						<div class="bar-holder">
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Geolocation</h2>
+						<p class="check" style="color: #6AC259;" check="geo-browser"><i class="fa fa-check-circle"></i> Browser Geo</p>
+						<p class="check" style="color: #6AC259;" check="geo-ip"><i class="fa fa-check-circle"></i> IP Geo</p>
+						<p class="check" style="color: #6AC259;" check="time"><i class="fa fa-check-circle"></i> Timezone</p>
+						<p class="check" style="color: #6AC259;" check="proximity"><i class="fa fa-check-circle"></i> Proximity</p>
+					</div>
+					<div class="vector-box" vector="credentials">
+						<div class="bar-holder">
+							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
+						</div>
+						<h2>Credentials</h2>
+						<p class="check" style="color: #6AC259;" check="requirements"><i class="fa fa-check-circle"></i> Requirements</p>
+						<p class="check" style="color: #6AC259;" check="novelty"><i class="fa fa-check-circle"></i> Novelty</p>
+						<p class="check" style="color: #6AC259;" check="scope"><i class="fa fa-check-circle"></i> Query Scope</p>
 					</div>
 					<div class="vector-box" vector="behavior">
 						<div class="bar-holder">
 							<div class="bar" style="height: 0; background: #6AC259;"><p>10</p></div>
 						</div>
 						<h2>Behavior</h2>
+						<p class="check" style="color: #6AC259;" check="reactions"><i class="fa fa-check-circle"></i> Reaction</p>
+						<p class="check" style="color: #6AC259;" check="history"><i class="fa fa-check-circle"></i> History</p>
+						<p class="check" style="color: #6AC259;" check="attempts"><i class="fa fa-check-circle"></i> Attempts</p>
+						<p class="check" style="color: #6AC259;" check="patterns"><i class="fa fa-check-circle"></i> Patterns</p>
 					</div>
 				</div>
 			</div>
@@ -151,14 +172,14 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					$("#login-form").prepend('<div class="solid-login-btn"><img src="assets/solid-login.svg" height="25"><p>Login Securely with SolidLogin</p><i class="fa fa-chevron-right"></i></div>');
 					$("button[type=submit]").prop("disabled", true);
 					$(".solid-login-steps").append('<div class="solid-login-step"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 1</p><h2>Basic Login Credentials</h2></div></div>');
-					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post"><input type="text" placeholder="Email Address" name="email"><input type="password" placeholder="Password" name="password"></form></div>');
+					$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form"><input type="text" placeholder="Email Address" name="email"><input type="password" placeholder="Password" name="password"></form></div>');
 					$("#login-form").click(function(){
 						function setVector(vector, value) {
 							$(".vector-box[vector='" + vector + "'] .bar").height(30 * value);
-							$(".vector-box[vector='" + vector + "'] p").text(value);
+							$(".vector-box[vector='" + vector + "'] .bar p").text(value);
 							if(value < 3.5) {
 								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#A90015'});
-							} else if (value < 7.5) {
+							} else if (value < threshold) {
 								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#F5E823'});
 							} else {
 								$(".vector-box[vector='" + vector + "'] .bar").css({background: '#6AC259'});
@@ -168,19 +189,46 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							$(".threshold").css({top: (300 - (threshold * 30))});
 							$(".threshold-text").text(threshold);
 						}
+						function setCheck(check, value) {
+							checks[check] = value;
+							if(value) {
+								$(".check[check='" + check + "']").css({color: '#6AC259'});
+								$(".check[check='" + check + "'] .fa").removeClass("fa-times-circle").addClass("fa-check-circle");
+							} else {
+								$(".check[check='" + check + "']").css({color: '#E14457'});
+								$(".check[check='" + check + "'] .fa").removeClass("fa-check-circle").addClass("fa-times-circle");
+							}
+						}
+						var checks = {};
 
 						$(".solid-dialogs").show().animate({marginTop: 0, opacity: 1}, 300);
 						$(".solid-login-modal").fadeIn(300);
 
 						var vectors = {
 							'hacking': 10,
-							'automation': 2,
+							'automation': 7,
 							'device': 5,
-							'credentials': 6,
+							'credentials': 2,
 							'geolocation': 9,
-							'behavior': 6
+							'behavior': 8
 						};
 						var threshold = 7.145;
+
+						setCheck("requirements", false);
+						setCheck("novelty", false);
+						setCheck("scope", false);
+						setCheck("recaptcha", false);
+						setCheck("isp", false);
+						setCheck("ip-address", false);
+						setCheck("history", false);
+
+						var stage = 0;
+
+						function stage() {
+							if(stage == 0) {
+								
+							}
+						}
 
 						setTimeout(function() {
 							$(".solid-debug-dialog").show().animate({marginLeft: '20px'}, {duration: 450, queue: false});
@@ -195,7 +243,13 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 							}, 150);
 						}, 700);
 
+						$("#solid-next").click(function(){
+							stage();
+						});
 
+						$("#solid-form").submit(function(){
+							stage();
+						});
 					});
 				});
 			}
