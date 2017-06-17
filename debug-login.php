@@ -166,8 +166,14 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					</div>
 				</div>
 				<div class="action-box">
-					<h2>Possible Responses:</h2>
-					<p>Generate Identity Check (52.0%), <u>Ask Security Quesiton (86.5%)</u>, Send Two-Factor Code (11.9%), Google reCAPTCHA (0.02%)</p>
+					<div id="r1">
+						<h2>Possible Responses:</h2>
+						<p>Generate Identity Check (52.0%), <u>Ask Security Quesiton (86.5%)</u>, Send Two-Factor SMS (11.9%), Google reCAPTCHA (0.02%)</p>
+					</div>
+					<div id="r2" style="display: none;">
+						<h2>Possible Responses:</h2>
+						<p><u>Send Two-Factor SMS (96.5%)</u>, Send Two-Factor Email (87.2%), Push Flash Applet, Send Push Notification (8.02%)</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -283,9 +289,11 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 									setVector("behavior", 8);
 									setTimeout(function(){
 										$(".threat").animate({left: '268px', width: '130px'}, 300);
-										$(".solid-login-steps").append('<div class="solid-login-step" id="step-3"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 3</p><h2>Please enter the 2FA code sent via SMS to +65 9&bull;&bull;&bull;&bull;&bull;35.</h2></div></div>');
-										$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form3"><input type="text" placeholder="Your Answer" name="answer" id="solid-answer2"></form></div>');
+										$(".solid-login-steps").append('<div class="solid-login-step" id="step-3"><i class="fa fa-circle-thin fa-fw"></i><div class="step-text"><p>Step 3</p><h2>Please enter a 2FA code from the Google Authenticator app.</h2></div></div>');
+										$(".solid-login-steps").append('<div class="current-step"><form action="" method="post" id="solid-form3"><input type="text" placeholder="6-Digit Code" name="answer" id="solid-answer2"></form></div>');
 										$(".stepview").prepend('<div class="step success"></div>');
+										$("#r1").hide();
+										$("#r2").show();
 									}, 200);
 								}
 							} else if (stage == 2) {
