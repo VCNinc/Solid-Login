@@ -112,6 +112,12 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					$("#login-form").click(function(){
 						$(".solid-dialogs").show().animate({marginTop: 0, opacity: 1}, 300);
 						$(".solid-login-modal").fadeIn(300);
+						setTimeout(function() {
+							$(".solid-debug-dialog").show().animate({marginLeft: '20px'}, {duration: 450, queue: false});
+							setTimeout(function(){
+								$(".solid-debug-dialog").show().animate({opacity: 1}, {duration: 300, queue: false});
+							}, 150);
+						}, 700);
 					});
 				});
 			}
