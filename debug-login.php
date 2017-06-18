@@ -176,7 +176,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 					</div>
 					<div id="r2" style="display: none;">
 						<h2>Possible Responses:</h2>
-						<p><u>Send Two-Factor SMS (96.5%)</u>, Send Two-Factor Email (87.2%), Push Flash Applet, Send Push Notification (8.02%)</p>
+						<p><u>Send Two-Factor TOTP (96.5%)</u>, Send Two-Factor Email (87.2%), Push Flash Applet, Send Push Notification (8.02%)</p>
 					</div>
 					<div id="r3" style="display: none;">
 						<h2>Possible Responses:</h2>
