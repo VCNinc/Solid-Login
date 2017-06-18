@@ -339,6 +339,7 @@ $password = empty($_POST['password']) ? '' : $_POST['password'];
 										$(".solid-login-btn-solid").text("Done");
 										$(".action-box h2").text("Login Accepted");
 										$(".action-box p").text("Minimum threshold met for all vectors.");
+										$(".action-box").addClass("accepted");
 										$(".accept").show();
 									}, 200);
 								}

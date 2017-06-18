@@ -444,3 +444,11 @@
 .recaptcha {
 	display: inline-block;
 }
+
+.action-box.accepted {
+	border-color: rgb(106, 194, 89) !important;
+}
+
+.action-box.accepted * {
+	color: rgb(106, 194, 89) !important;
+}
